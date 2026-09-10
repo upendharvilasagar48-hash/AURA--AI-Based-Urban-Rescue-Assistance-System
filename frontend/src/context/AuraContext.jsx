@@ -80,8 +80,14 @@ export const AuraProvider = ({ children }) => {
     const connectWs = () => {
       const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
       const host = window.location.hostname || 'localhost';
-      // In dev proxy, Vite proxies /ws to :8000
-      const wsUrl = `${protocol}//${host}:8000/ws/telemetry`;
+      let wsUrl;
+      if (import.meta.env.VITE_WS_URL) {
+        wsUrl = `${import.meta.env.VITE_WS_URL}/ws/telemetry`;
+      } else if (window.location.port === '3000' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+        wsUrl = `${protocol}//${host}:8000/ws/telemetry`;
+      } else {
+        wsUrl = `${protocol}//${window.location.host}/ws/telemetry`;
+      }
 
       try {
         const ws = new WebSocket(wsUrl);
