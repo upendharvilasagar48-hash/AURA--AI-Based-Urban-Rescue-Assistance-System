@@ -1,0 +1,805 @@
+{
+  "initialTelemetry": {
+    "timestamp": "2026-09-10T18:14:23.604124+00:00",
+    "mission_id": "MISSION-HYD-001",
+    "mission_status": "IDLE",
+    "phase": "TO_PATIENT",
+    "ambulance": {
+      "ambulance_id": "AMB-108-HYD",
+      "call_sign": "AURA-DELTA-1",
+      "model": "Force Motors Advanced Life Support (ALS)",
+      "equipment": [
+        "Automated Defibrillator",
+        "Mechanical Ventilator",
+        "Multipara Monitor",
+        "AURA Agent Core"
+      ],
+      "paramedic_name": "Dr. Praneeth & Paramedic Swathi",
+      "driver_name": "Surender Reddy",
+      "base_station": "Boduppal Emergency Station",
+      "lat": 17.4135,
+      "lng": 78.5786,
+      "heading_deg": 270.0,
+      "speed_kmh": 0.0,
+      "warning_zone_radius_m": 50.0,
+      "tracking_mode": "DEMO",
+      "gps_accuracy_m": null,
+      "last_real_gps_time": null
+    },
+    "patient": {
+      "patient_id": "PT-HYD-772",
+      "name": "Rajeshwar Rao",
+      "age": 62,
+      "gender": "Male",
+      "location_name": "Secunderabad Rail Nilayam Entrance",
+      "lat": 17.4411,
+      "lng": 78.5015,
+      "condition": "Severe Acute Chest Pain, Suspected Myocardial Infarction",
+      "triage_priority": "CRITICAL_CODE_RED",
+      "vitals": {
+        "heart_rate_bpm": 138,
+        "blood_pressure": "88/56 mmHg",
+        "spo2_percent": 91,
+        "respiratory_rate": 26
+      },
+      "reporting_party": "Relative (S. Rao) via 108 Dispatch"
+    },
+    "hospital": {
+      "id": "HOSP-GANDHI",
+      "name": "Gandhi Hospital & Emergency Trauma Care",
+      "locality": "Musheerabad, Secunderabad",
+      "lat": 17.4241,
+      "lng": 78.5034,
+      "type": "Level-1 Government Trauma Center",
+      "emergency_beds_available": 14,
+      "icu_beds_available": 5,
+      "trauma_team_status": "STANDBY",
+      "distance_from_patient_km": 2.1,
+      "normal_eta_min": 6,
+      "eta_seconds": 2384
+    },
+    "navigation": {
+      "active_route_type": "PRIMARY",
+      "route_name": "Uppal-Habsiguda Corridor",
+      "distance_remaining_m": 10121.5,
+      "distance_remaining_km": 10.12,
+      "eta_seconds": 2024,
+      "eta_minutes": 33.7,
+      "current_waypoint_index": 0,
+      "total_waypoints": 15,
+      "next_waypoint_name": "Boduppal Depot Start",
+      "waypoints": [
+        {
+          "name": "Boduppal Depot Start",
+          "lat": 17.4135,
+          "lng": 78.5786,
+          "speed_limit": 50
+        },
+        {
+          "name": "Boduppal Main Road",
+          "lat": 17.4115,
+          "lng": 78.5735,
+          "speed_limit": 50
+        },
+        {
+          "name": "Boduppal X-Roads",
+          "lat": 17.4095,
+          "lng": 78.5685,
+          "speed_limit": 45
+        },
+        {
+          "name": "Uppal Outer Ring Road Approach",
+          "lat": 17.405,
+          "lng": 78.564,
+          "speed_limit": 55
+        },
+        {
+          "name": "Uppal Circle (Bottleneck Point)",
+          "lat": 17.4019,
+          "lng": 78.5602,
+          "speed_limit": 40
+        },
+        {
+          "name": "Uppal Metro Station",
+          "lat": 17.4058,
+          "lng": 78.553,
+          "speed_limit": 50
+        },
+        {
+          "name": "Survey of India Corridor",
+          "lat": 17.411,
+          "lng": 78.547,
+          "speed_limit": 50
+        },
+        {
+          "name": "Habsiguda Metro Junction",
+          "lat": 17.4172,
+          "lng": 78.5412,
+          "speed_limit": 45
+        },
+        {
+          "name": "NGRI Metro",
+          "lat": 17.4225,
+          "lng": 78.536,
+          "speed_limit": 50
+        },
+        {
+          "name": "Tarnaka Flyover Base",
+          "lat": 17.4255,
+          "lng": 78.533,
+          "speed_limit": 50
+        },
+        {
+          "name": "Tarnaka Junction Hub",
+          "lat": 17.4278,
+          "lng": 78.5303,
+          "speed_limit": 45
+        },
+        {
+          "name": "Mettuguda Flyover Entrance",
+          "lat": 17.431,
+          "lng": 78.5255,
+          "speed_limit": 55
+        },
+        {
+          "name": "Lalaguda Overbridge",
+          "lat": 17.4338,
+          "lng": 78.5205,
+          "speed_limit": 50
+        },
+        {
+          "name": "Rail Nilayam South",
+          "lat": 17.4385,
+          "lng": 78.5115,
+          "speed_limit": 45
+        },
+        {
+          "name": "Secunderabad Patient Pickup Point",
+          "lat": 17.4411,
+          "lng": 78.5015,
+          "speed_limit": 40
+        }
+      ],
+      "route_changed_reason": ""
+    },
+    "traffic": {
+      "junctions": {
+        "J1_UPPAL": {
+          "id": "J1_UPPAL",
+          "name": "Uppal Ring Road Crossroads (J-1)",
+          "lat": 17.4019,
+          "lng": 78.5602,
+          "congestion_level": "MODERATE",
+          "congestion_index": 45,
+          "green_corridor_active": false,
+          "traffic_police_station": "Uppal Traffic PS",
+          "delay_minutes": 2.5
+        },
+        "J2_HABSIGUDA": {
+          "id": "J2_HABSIGUDA",
+          "name": "Habsiguda Metro Junction (J-2)",
+          "lat": 17.4172,
+          "lng": 78.5412,
+          "congestion_level": "NORMAL",
+          "congestion_index": 20,
+          "green_corridor_active": false,
+          "traffic_police_station": "Gopalapuram / Habsiguda Sector",
+          "delay_minutes": 0.5
+        },
+        "J3_TARNAKA": {
+          "id": "J3_TARNAKA",
+          "name": "Tarnaka Flyover Hub (J-3)",
+          "lat": 17.4278,
+          "lng": 78.5303,
+          "congestion_level": "NORMAL",
+          "congestion_index": 25,
+          "green_corridor_active": false,
+          "traffic_police_station": "Tarnaka Traffic Post",
+          "delay_minutes": 1.0
+        },
+        "J4_SANGEETH": {
+          "id": "J4_SANGEETH",
+          "name": "Sangeeth Crossroads (J-4)",
+          "lat": 17.432,
+          "lng": 78.5025,
+          "congestion_level": "NORMAL",
+          "congestion_index": 30,
+          "green_corridor_active": false,
+          "traffic_police_station": "Secunderabad Traffic Division",
+          "delay_minutes": 1.2
+        }
+      },
+      "bottlenecks": []
+    },
+    "road_safety": {
+      "devices": [
+        {
+          "device_id": "V-101-CAR",
+          "label": "TS-08-EV-2024 (Hyundai Ioniq)",
+          "lat": 17.4022,
+          "lng": 78.5599,
+          "is_on_road": true,
+          "device_type": "CONNECTED_VEHICLE",
+          "lane": "Right / Fast Lane",
+          "road_name": "Uppal Crossroads Approach",
+          "driver_name": "R. Sharma",
+          "alert_status": "OUT_OF_ZONE",
+          "distance_to_ambulance_m": 2348.5,
+          "in_50m_zone": false,
+          "warning_message": "Normal monitoring",
+          "play_emergency_sound": false,
+          "log_reason": "Beyond 50m warning boundary (2348.5m away)."
+        },
+        {
+          "device_id": "BLD-APT-UPPAL",
+          "label": "Apartment 304, Sneha Enclave",
+          "lat": 17.4021,
+          "lng": 78.5604,
+          "is_on_road": false,
+          "device_type": "OFF_ROAD_BUILDING",
+          "building_name": "Sneha Enclave Residential",
+          "road_name": "Off-Street (18m away from carriageway)",
+          "driver_name": "Resident Smartphone",
+          "alert_status": "OUT_OF_ZONE",
+          "distance_to_ambulance_m": 2309.9,
+          "in_50m_zone": false,
+          "warning_message": "Normal monitoring",
+          "play_emergency_sound": false,
+          "log_reason": "Beyond 50m warning boundary (2309.9m away)."
+        },
+        {
+          "device_id": "V-102-CAR",
+          "label": "TS-07-UA-8891 (Honda City)",
+          "lat": 17.417,
+          "lng": 78.5415,
+          "is_on_road": true,
+          "device_type": "CONNECTED_VEHICLE",
+          "lane": "Center Lane",
+          "road_name": "Habsiguda Main Road",
+          "driver_name": "K. Venkatesh",
+          "alert_status": "OUT_OF_ZONE",
+          "distance_to_ambulance_m": 3955.4,
+          "in_50m_zone": false,
+          "warning_message": "Normal monitoring",
+          "play_emergency_sound": false,
+          "log_reason": "Beyond 50m warning boundary (3955.4m away)."
+        },
+        {
+          "device_id": "BLD-CAFE-HAB",
+          "label": "Table 4, Minerva Coffee Shop",
+          "lat": 17.4173,
+          "lng": 78.5416,
+          "is_on_road": false,
+          "device_type": "OFF_ROAD_BUILDING",
+          "building_name": "Minerva Commercial Complex",
+          "road_name": "Inside Building Ground Floor",
+          "driver_name": "Patron Phone",
+          "alert_status": "OUT_OF_ZONE",
+          "distance_to_ambulance_m": 3948.3,
+          "in_50m_zone": false,
+          "warning_message": "Normal monitoring",
+          "play_emergency_sound": false,
+          "log_reason": "Beyond 50m warning boundary (3948.3m away)."
+        },
+        {
+          "device_id": "V-103-BUS",
+          "label": "TSRTC Electric Metro Bus #3H",
+          "lat": 17.4275,
+          "lng": 78.5305,
+          "is_on_road": true,
+          "device_type": "COMMERCIAL_VEHICLE",
+          "lane": "Left Bus Lane",
+          "road_name": "Tarnaka Hub Service Rd",
+          "driver_name": "M. Yadaiah",
+          "alert_status": "OUT_OF_ZONE",
+          "distance_to_ambulance_m": 5335.3,
+          "in_50m_zone": false,
+          "warning_message": "Normal monitoring",
+          "play_emergency_sound": false,
+          "log_reason": "Beyond 50m warning boundary (5335.3m away)."
+        },
+        {
+          "device_id": "BLD-OFFICE-TAR",
+          "label": "Level 3, Tarnaka IT Towers",
+          "lat": 17.428,
+          "lng": 78.5307,
+          "is_on_road": false,
+          "device_type": "OFF_ROAD_BUILDING",
+          "building_name": "Tarnaka IT Towers",
+          "road_name": "Inside Highrise Office",
+          "driver_name": "Office Employee Device",
+          "alert_status": "OUT_OF_ZONE",
+          "distance_to_ambulance_m": 5331.6,
+          "in_50m_zone": false,
+          "warning_message": "Normal monitoring",
+          "play_emergency_sound": false,
+          "log_reason": "Beyond 50m warning boundary (5331.6m away)."
+        },
+        {
+          "device_id": "V-104-BIKE",
+          "label": "TS-09-CD-1120 (Royal Enfield)",
+          "lat": 17.4335,
+          "lng": 78.521,
+          "is_on_road": true,
+          "device_type": "TWO_WHEELER",
+          "lane": "Right Lane",
+          "road_name": "Lalaguda Rail Overbridge",
+          "driver_name": "A. Srinivas",
+          "alert_status": "OUT_OF_ZONE",
+          "distance_to_ambulance_m": 6503.0,
+          "in_50m_zone": false,
+          "warning_message": "Normal monitoring",
+          "play_emergency_sound": false,
+          "log_reason": "Beyond 50m warning boundary (6503.0m away)."
+        },
+        {
+          "device_id": "V-105-AMB-NEARBY",
+          "label": "TS-10-UB-9901 (Private Ambulance)",
+          "lat": 17.438,
+          "lng": 78.512,
+          "is_on_road": true,
+          "device_type": "CONNECTED_VEHICLE",
+          "lane": "Left Lane",
+          "road_name": "Sitafalmandi Road",
+          "driver_name": "P. Naresh",
+          "alert_status": "OUT_OF_ZONE",
+          "distance_to_ambulance_m": 7572.7,
+          "in_50m_zone": false,
+          "warning_message": "Normal monitoring",
+          "play_emergency_sound": false,
+          "log_reason": "Beyond 50m warning boundary (7572.7m away)."
+        }
+      ],
+      "stats": {
+        "total_registered_devices": 8,
+        "active_road_alerts": 0,
+        "suppressed_building_alerts": 0,
+        "total_alert_events": 0
+      }
+    },
+    "agents": {
+      "coordinator": {
+        "status": "ACTIVE",
+        "cycle": "OBSERVE_ANALYZE_DECIDE_ACT",
+        "last_explanation": "AURA initialized and in standby mode. All specialized agents synchronized."
+      },
+      "route_agent": {
+        "status": "OPTIMIZING",
+        "mode": "PRIMARY"
+      },
+      "traffic_agent": {
+        "status": "MONITORING_JUNCTIONS",
+        "bottlenecks_detected": 0
+      },
+      "road_safety_agent": {
+        "status": "SCANNING_50M_ZONE",
+        "active_alerts": 0
+      },
+      "hospital_agent": {
+        "status": "COORDINATING_TRAUMA_BAY",
+        "target_hospital": "Gandhi Hospital & Emergency Trauma Care"
+      },
+      "voice_agent": {
+        "status": "LISTENING_INTENTS",
+        "last_response": "AURA Voice System is ready. How can I assist your mission?"
+      },
+      "mission_agent": {
+        "status": "IDLE"
+      }
+    },
+    "simulation": {
+      "is_running": false,
+      "speed": 1.0,
+      "demo_mode_active": false,
+      "tracking_mode": "DEMO"
+    },
+    "recent_audit_decisions": [],
+    "system_events": [
+      {
+        "timestamp": "18:14:23",
+        "category": "SYSTEM",
+        "message": "AURA Multi-Agent Emergency Orchestrator booted successfully.",
+        "details": {}
+      }
+    ]
+  },
+  "pickupPresets": [
+    {
+      "id": "PICKUP-BODUPPAL",
+      "name": "Boduppal X Roads Junction",
+      "locality": "Boduppal, Medchal-Malkajgiri",
+      "lat": 17.4095,
+      "lng": 78.5685,
+      "landmark": "Near Asian Shiva Ganga Theatre"
+    },
+    {
+      "id": "PICKUP-UPPAL-METRO",
+      "name": "Uppal Ring Road & Metro Station",
+      "locality": "Uppal, East Zone",
+      "lat": 17.4019,
+      "lng": 78.5602,
+      "landmark": "Metro Pillar 948, Uppal Junction"
+    },
+    {
+      "id": "PICKUP-HABSIGUDA",
+      "name": "Habsiguda Crossroads (J-2)",
+      "locality": "Habsiguda",
+      "lat": 17.4172,
+      "lng": 78.5412,
+      "landmark": "Near NGRI Metro Gate 1"
+    },
+    {
+      "id": "PICKUP-TARNAKA",
+      "name": "Tarnaka Flyover Hub (J-3)",
+      "locality": "Tarnaka, Secunderabad",
+      "lat": 17.4278,
+      "lng": 78.5303,
+      "landmark": "Tarnaka Metro Pillar 1102"
+    },
+    {
+      "id": "PICKUP-SECUNDERABAD",
+      "name": "Secunderabad Rail Nilayam Entrance",
+      "locality": "Secunderabad Station",
+      "lat": 17.4411,
+      "lng": 78.5015,
+      "landmark": "South Central Railway HQ / Platform 10"
+    },
+    {
+      "id": "PICKUP-BEGUMPET",
+      "name": "Begumpet Airport Road",
+      "locality": "Begumpet, Central Zone",
+      "lat": 17.444,
+      "lng": 78.468,
+      "landmark": "Opposite Lifestyle Building"
+    },
+    {
+      "id": "PICKUP-BANJARA",
+      "name": "Banjara Hills Road No 1",
+      "locality": "Banjara Hills, West Zone",
+      "lat": 17.4156,
+      "lng": 78.435,
+      "landmark": "Near Care Hospital / City Center Mall"
+    },
+    {
+      "id": "PICKUP-HITEC",
+      "name": "Hitec City Cyber Towers",
+      "locality": "Madhapur, Cyberabad",
+      "lat": 17.4504,
+      "lng": 78.3808,
+      "landmark": "Cyber Gateway Main Entrance"
+    }
+  ],
+  "hospitals": {
+    "HOSP-GANDHI": {
+      "id": "HOSP-GANDHI",
+      "name": "Gandhi Hospital & Emergency Trauma Care",
+      "locality": "Musheerabad, Secunderabad",
+      "lat": 17.4241,
+      "lng": 78.5034,
+      "type": "Level-1 Government Trauma Center",
+      "emergency_beds_available": 14,
+      "icu_beds_available": 5,
+      "trauma_team_status": "STANDBY",
+      "distance_from_patient_km": 2.1,
+      "normal_eta_min": 6
+    },
+    "HOSP-YASHODA": {
+      "id": "HOSP-YASHODA",
+      "name": "Yashoda Hospital Secunderabad",
+      "locality": "Alexander Road, Secunderabad",
+      "lat": 17.4435,
+      "lng": 78.4982,
+      "type": "Comprehensive Cardiac & Trauma Center",
+      "emergency_beds_available": 8,
+      "icu_beds_available": 3,
+      "trauma_team_status": "READY",
+      "distance_from_patient_km": 0.8,
+      "normal_eta_min": 3
+    },
+    "HOSP-KIMS": {
+      "id": "HOSP-KIMS",
+      "name": "KIMS Hospital Secunderabad",
+      "locality": "Minister Road, Secunderabad",
+      "lat": 17.4385,
+      "lng": 78.4875,
+      "type": "Multi-Specialty Emergency Hospital",
+      "emergency_beds_available": 12,
+      "icu_beds_available": 4,
+      "trauma_team_status": "STANDBY",
+      "distance_from_patient_km": 1.9,
+      "normal_eta_min": 5
+    },
+    "HOSP-APOLLO": {
+      "id": "HOSP-APOLLO",
+      "name": "Apollo Hospitals Jubilee Hills",
+      "locality": "Road No 72, Jubilee Hills",
+      "lat": 17.4258,
+      "lng": 78.4116,
+      "type": "Super-Specialty Quaternary Care & Trauma",
+      "emergency_beds_available": 16,
+      "icu_beds_available": 6,
+      "trauma_team_status": "READY",
+      "distance_from_patient_km": 10.2,
+      "normal_eta_min": 14
+    },
+    "HOSP-NIMS": {
+      "id": "HOSP-NIMS",
+      "name": "Nizam's Institute of Medical Sciences (NIMS)",
+      "locality": "Punjagutta, Hyderabad",
+      "lat": 17.4218,
+      "lng": 78.4533,
+      "type": "State Autonomous Apex Trauma Center",
+      "emergency_beds_available": 20,
+      "icu_beds_available": 8,
+      "trauma_team_status": "READY",
+      "distance_from_patient_km": 6.8,
+      "normal_eta_min": 10
+    },
+    "HOSP-CARE": {
+      "id": "HOSP-CARE",
+      "name": "CARE Hospitals Banjara Hills",
+      "locality": "Road No 1, Banjara Hills",
+      "lat": 17.4145,
+      "lng": 78.4485,
+      "type": "Comprehensive Cardiac & Trauma Hospital",
+      "emergency_beds_available": 10,
+      "icu_beds_available": 4,
+      "trauma_team_status": "STANDBY",
+      "distance_from_patient_km": 7.4,
+      "normal_eta_min": 11
+    },
+    "HOSP-OSMANIA": {
+      "id": "HOSP-OSMANIA",
+      "name": "Osmania General Hospital",
+      "locality": "Afzal Gunj, Old City",
+      "lat": 17.3785,
+      "lng": 78.4755,
+      "type": "Government Apex Emergency Hospital",
+      "emergency_beds_available": 25,
+      "icu_beds_available": 10,
+      "trauma_team_status": "READY",
+      "distance_from_patient_km": 8.5,
+      "normal_eta_min": 12
+    }
+  },
+  "routes": {
+    "primary": [
+      {
+        "name": "Boduppal Depot Start",
+        "lat": 17.4135,
+        "lng": 78.5786,
+        "speed_limit": 50
+      },
+      {
+        "name": "Boduppal Main Road",
+        "lat": 17.4115,
+        "lng": 78.5735,
+        "speed_limit": 50
+      },
+      {
+        "name": "Boduppal X-Roads",
+        "lat": 17.4095,
+        "lng": 78.5685,
+        "speed_limit": 45
+      },
+      {
+        "name": "Uppal Outer Ring Road Approach",
+        "lat": 17.405,
+        "lng": 78.564,
+        "speed_limit": 55
+      },
+      {
+        "name": "Uppal Circle (Bottleneck Point)",
+        "lat": 17.4019,
+        "lng": 78.5602,
+        "speed_limit": 40
+      },
+      {
+        "name": "Uppal Metro Station",
+        "lat": 17.4058,
+        "lng": 78.553,
+        "speed_limit": 50
+      },
+      {
+        "name": "Survey of India Corridor",
+        "lat": 17.411,
+        "lng": 78.547,
+        "speed_limit": 50
+      },
+      {
+        "name": "Habsiguda Metro Junction",
+        "lat": 17.4172,
+        "lng": 78.5412,
+        "speed_limit": 45
+      },
+      {
+        "name": "NGRI Metro",
+        "lat": 17.4225,
+        "lng": 78.536,
+        "speed_limit": 50
+      },
+      {
+        "name": "Tarnaka Flyover Base",
+        "lat": 17.4255,
+        "lng": 78.533,
+        "speed_limit": 50
+      },
+      {
+        "name": "Tarnaka Junction Hub",
+        "lat": 17.4278,
+        "lng": 78.5303,
+        "speed_limit": 45
+      },
+      {
+        "name": "Mettuguda Flyover Entrance",
+        "lat": 17.431,
+        "lng": 78.5255,
+        "speed_limit": 55
+      },
+      {
+        "name": "Lalaguda Overbridge",
+        "lat": 17.4338,
+        "lng": 78.5205,
+        "speed_limit": 50
+      },
+      {
+        "name": "Rail Nilayam South",
+        "lat": 17.4385,
+        "lng": 78.5115,
+        "speed_limit": 45
+      },
+      {
+        "name": "Secunderabad Patient Pickup Point",
+        "lat": 17.4411,
+        "lng": 78.5015,
+        "speed_limit": 40
+      }
+    ],
+    "alternate": [
+      {
+        "name": "Boduppal Depot Start",
+        "lat": 17.4135,
+        "lng": 78.5786,
+        "speed_limit": 50
+      },
+      {
+        "name": "Mallapur Link Road",
+        "lat": 17.419,
+        "lng": 78.572,
+        "speed_limit": 55
+      },
+      {
+        "name": "Nacharam Industrial Area Bypass",
+        "lat": 17.426,
+        "lng": 78.562,
+        "speed_limit": 60
+      },
+      {
+        "name": "Nacharam IDA X-Roads",
+        "lat": 17.4285,
+        "lng": 78.552,
+        "speed_limit": 50
+      },
+      {
+        "name": "Habsiguda North Link (Bypassed Uppal)",
+        "lat": 17.424,
+        "lng": 78.542,
+        "speed_limit": 55
+      },
+      {
+        "name": "Tarnaka Junction Hub",
+        "lat": 17.4278,
+        "lng": 78.5303,
+        "speed_limit": 50
+      },
+      {
+        "name": "Mettuguda Flyover Entrance",
+        "lat": 17.431,
+        "lng": 78.5255,
+        "speed_limit": 55
+      },
+      {
+        "name": "Lalaguda Overbridge",
+        "lat": 17.4338,
+        "lng": 78.5205,
+        "speed_limit": 50
+      },
+      {
+        "name": "Rail Nilayam South",
+        "lat": 17.4385,
+        "lng": 78.5115,
+        "speed_limit": 45
+      },
+      {
+        "name": "Secunderabad Patient Pickup Point",
+        "lat": 17.4411,
+        "lng": 78.5015,
+        "speed_limit": 40
+      }
+    ],
+    "gandhi": [
+      {
+        "name": "Secunderabad Patient Pickup Point",
+        "lat": 17.4411,
+        "lng": 78.5015,
+        "speed_limit": 40
+      },
+      {
+        "name": "St. Ann's High School Road",
+        "lat": 17.436,
+        "lng": 78.502,
+        "speed_limit": 45
+      },
+      {
+        "name": "Sangeeth Junction",
+        "lat": 17.432,
+        "lng": 78.5025,
+        "speed_limit": 40
+      },
+      {
+        "name": "Padmarao Nagar Main Road",
+        "lat": 17.428,
+        "lng": 78.503,
+        "speed_limit": 45
+      },
+      {
+        "name": "Musheerabad Crossroads",
+        "lat": 17.4255,
+        "lng": 78.5032,
+        "speed_limit": 40
+      },
+      {
+        "name": "Gandhi Hospital Emergency Trauma Bay",
+        "lat": 17.4241,
+        "lng": 78.5034,
+        "speed_limit": 30
+      }
+    ],
+    "yashoda": [
+      {
+        "name": "Secunderabad Patient Pickup Point",
+        "lat": 17.4411,
+        "lng": 78.5015,
+        "speed_limit": 40
+      },
+      {
+        "name": "Alexander Road",
+        "lat": 17.4425,
+        "lng": 78.4998,
+        "speed_limit": 45
+      },
+      {
+        "name": "Yashoda Hospital Emergency Center",
+        "lat": 17.4435,
+        "lng": 78.4982,
+        "speed_limit": 30
+      }
+    ],
+    "kims": [
+      {
+        "name": "Secunderabad Patient Pickup Point",
+        "lat": 17.4411,
+        "lng": 78.5015,
+        "speed_limit": 40
+      },
+      {
+        "name": "MG Road Corridor",
+        "lat": 17.4395,
+        "lng": 78.494,
+        "speed_limit": 45
+      },
+      {
+        "name": "Minister Road Junction",
+        "lat": 17.4388,
+        "lng": 78.49,
+        "speed_limit": 40
+      },
+      {
+        "name": "KIMS Hospital Trauma Complex",
+        "lat": 17.4385,
+        "lng": 78.4875,
+        "speed_limit": 30
+      }
+    ]
+  }
+}
