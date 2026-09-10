@@ -1,0 +1,73 @@
+﻿# Dependencies
+node_modules/
+*/node_modules/
+package-lock.json.bak
+
+# Build outputs
+dist/
+build/
+*.local
+out/
+
+# Android build outputs & caches
+.gradle/
+*/.gradle/
+*/android/.gradle/
+*/android/build/
+*/android/app/build/
+*/android/.cxx/
+*/android/app/.cxx/
+
+# Python & testing
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+venv/
+.venv/
+env/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Expo & React Native
+.expo/
+mobile/.expo/
+web-build/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & Secrets
+.env
+.env*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor files
+.vscode/
+.idea/
+
+# Backups
+mobile_backup/
+
+# Archives
+*.zip

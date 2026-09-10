@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Leaflet Light Mode styling */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background-color: #f8fafc !important;
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 2px solid #ef4444 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.25) !important;
+}
+
+.leaflet-popup-tip {
+  background-color: #ffffff !important;
+}
+
+/* Custom Radar & Pulse Animations */
+@keyframes siren-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-siren {
+  animation: siren-pulse 1.2s infinite ease-in-out;
+}
+
+/* Moving Ambulance Vehicle Animations */
+@keyframes amb-motion-ripple {
+  0% { transform: scale(0.5); opacity: 0.9; }
+  100% { transform: scale(2.3); opacity: 0; }
+}
+
+@keyframes strobe-red {
+  0%, 48% { fill: #ff1744; filter: drop-shadow(0 0 6px #ff1744); }
+  50%, 100% { fill: #500714; filter: none; }
+}
+
+@keyframes strobe-blue {
+  0%, 48% { fill: #002554; filter: none; }
+  50%, 100% { fill: #00f0ff; filter: drop-shadow(0 0 6px #00f0ff); }
+}
+
+@keyframes amb-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 23, 68, 0.6)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)); }
+  50% { filter: drop-shadow(0 0 16px rgba(255, 23, 68, 0.95)) drop-shadow(0 0 24px rgba(0, 240, 255, 0.8)); }
+}
+
+@keyframes headlight-glow {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 0.95; }
+}
+
+.amb-motion-ripple-1 {
+  animation: amb-motion-ripple 1.4s infinite cubic-bezier(0, 0.2, 0.8, 1);
+}
+
+.amb-motion-ripple-2 {
+  animation: amb-motion-ripple 1.4s infinite cubic-bezier(0, 0.2, 0.8, 1);
+  animation-delay: 0.7s;
+}
+
+.amb-strobe-red {
+  animation: strobe-red 0.35s infinite alternate ease-in-out;
+}
+
+.amb-strobe-blue {
+  animation: strobe-blue 0.35s infinite alternate ease-in-out;
+}
+
+.amb-moving-glow {
+  animation: amb-glow-pulse 1.0s infinite ease-in-out;
+}
+
+.amb-headlight-shimmer {
+  animation: headlight-glow 1.2s infinite alternate ease-in-out;
+}
+
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d121c;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f293d;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}

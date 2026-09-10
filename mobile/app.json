@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "AURA Ambulance Driver",
+    "slug": "aura-ambulance-driver",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0a0d14"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aura.ambulance"
+    },
+    "android": {
+      "package": "com.aura.ambulance",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0a0d14"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "RECORD_AUDIO",
+        "INTERNET",
+        "WAKE_LOCK",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow AURA Ambulance Driver to access your phone's live GPS location for emergency route navigation and traffic signal pre-emption."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "aura-ambulance-driver"
+      }
+    }
+  }
+}
