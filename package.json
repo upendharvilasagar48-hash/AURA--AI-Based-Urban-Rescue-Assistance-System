@@ -4,5 +4,8 @@
   "private": true,
   "scripts": {
     "build": "cd frontend && npm install && npm run build"
+  },
+  "dependencies": {
+    "vite": "^5.4.0"
   }
 }
