@@ -71,3 +71,6 @@ mobile_backup/
 
 # Archives
 *.zip
+
+bore_bin/
+bore.zip
