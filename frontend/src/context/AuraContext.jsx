@@ -28,6 +28,13 @@ const calculateBearing = (lat1, lon1, lat2, lon2) => {
   return Math.round((toDeg(brng) + 360) % 360);
 };
 
+// Helper to ensure hospitals is always a clean array of objects
+const toHospArray = (raw) => {
+  if (Array.isArray(raw)) return raw;
+  if (raw && typeof raw === 'object') return Object.values(raw);
+  return [];
+};
+
 export const AuraProvider = ({ children }) => {
   // Telemetry initialized directly with full Hyderabad dataset - never null
   const [telemetry, setTelemetry] = useState(fallbackBundle.initialTelemetry);
@@ -36,7 +43,7 @@ export const AuraProvider = ({ children }) => {
   const [audioMuted, setAudioMuted] = useState(false);
   const [voiceAssistantOpen, setVoiceAssistantOpen] = useState(false);
   const [voiceHistory, setVoiceHistory] = useState([]);
-  const [hospitals, setHospitals] = useState(() => Object.values(fallbackBundle.hospitals || {}));
+  const [hospitals, setHospitals] = useState(() => toHospArray(fallbackBundle.hospitals));
   const [pickupPresets, setPickupPresets] = useState(() => fallbackBundle.pickupPresets || []);
   const [pickupModalOpen, setPickupModalOpen] = useState(false);
   const [hospitalModalOpen, setHospitalModalOpen] = useState(false);
@@ -105,7 +112,7 @@ export const AuraProvider = ({ children }) => {
       .then(data => {
         if (data && data.success) {
           if (data.pickup_presets) setPickupPresets(data.pickup_presets);
-          if (data.hospitals) setHospitals(data.hospitals);
+          if (data.hospitals) setHospitals(toHospArray(data.hospitals));
         }
       })
       .catch(() => {});
@@ -140,7 +147,8 @@ export const AuraProvider = ({ children }) => {
             setTelemetry(data);
 
             if (data?.road_safety?.devices) {
-              const roadVehicleAlerted = data.road_safety.devices.some(
+              const rawDevs = Array.isArray(data.road_safety.devices) ? data.road_safety.devices : Object.values(data.road_safety.devices);
+              const roadVehicleAlerted = rawDevs.some(
                 d => d.is_on_road && d.alert_status === 'ALERT_DISPATCHED'
               );
               if (roadVehicleAlerted && !prevAlertedCarRef.current && !audioMuted) {
@@ -171,7 +179,10 @@ export const AuraProvider = ({ children }) => {
     fetch('/api/hospitals')
       .then(r => r.json())
       .then(data => {
-        if (Array.isArray(data) && data.length > 0) setHospitals(data);
+        if (data) {
+          const arr = toHospArray(data);
+          if (arr.length > 0) setHospitals(arr);
+        }
       })
       .catch(() => {});
 
@@ -194,7 +205,7 @@ export const AuraProvider = ({ children }) => {
       setTelemetry(prev => {
         if (!prev) return fallbackBundle.initialTelemetry;
 
-        const waypoints = currentRouteRef.current || prev.navigation.waypoints;
+        const waypoints = currentRouteRef.current || prev.navigation?.waypoints;
         if (!waypoints || waypoints.length < 2) return prev;
 
         let segIdx = segmentIdxRef.current;
@@ -245,26 +256,33 @@ export const AuraProvider = ({ children }) => {
           missionStatus = remainingMeters < 80 ? 'HOSPITAL_ARRIVAL' : 'EN_ROUTE_HOSPITAL';
         }
 
-        const updatedJunctions = (prev.traffic?.junctions || []).map(j => {
+        // Object-safe & Array-safe green corridor junction evaluation
+        const rawJunctions = prev.traffic?.junctions || {};
+        const updatedJunctions = {};
+        for (const [key, j] of Object.entries(rawJunctions)) {
           const distToJunction = calculateDistMeters(curLat, curLng, j.lat, j.lng);
           if (distToJunction < 350) {
-            return {
+            updatedJunctions[key] = {
               ...j,
               signal_state: 'GREEN_CORRIDOR',
               current_phase: 'EMERGENCY_PREEMPTION',
               wait_time_sec: 0,
               green_corridor_active: true
             };
+          } else {
+            updatedJunctions[key] = {
+              ...j,
+              signal_state: j.green_corridor_active ? 'GREEN_CORRIDOR' : 'GREEN',
+              wait_time_sec: j.green_corridor_active ? 0 : 12
+            };
           }
-          return {
-            ...j,
-            signal_state: j.green_corridor_active ? 'GREEN_CORRIDOR' : 'GREEN',
-            wait_time_sec: j.green_corridor_active ? 0 : 12
-          };
-        });
+        }
 
+        // Object-safe & Array-safe road safety devices evaluation
         let vehicleAlerted = false;
-        const updatedDevices = (prev.road_safety?.devices || []).map(d => {
+        const rawDevs = prev.road_safety?.devices;
+        const devsList = Array.isArray(rawDevs) ? rawDevs : (rawDevs && typeof rawDevs === 'object' ? Object.values(rawDevs) : []);
+        const updatedDevices = devsList.map(d => {
           const dist = calculateDistMeters(curLat, curLng, d.lat, d.lng);
           const inZone = dist <= 50.0 && d.is_on_road;
           if (inZone) vehicleAlerted = true;
@@ -401,7 +419,8 @@ export const AuraProvider = ({ children }) => {
   };
 
   const changeHospital = async (hospitalId) => {
-    const selectedHosp = hospitals.find(h => h.id === hospitalId) || hospitals[0];
+    const hospList = toHospArray(hospitals);
+    const selectedHosp = hospList.find(h => h.id === hospitalId) || hospList[0];
     if (selectedHosp) {
       setTelemetry(prev => ({
         ...prev,
@@ -523,23 +542,26 @@ export const AuraProvider = ({ children }) => {
   };
 
   const injectTraffic = async (junctionId, level, index, delay) => {
-    setTelemetry(prev => ({
-      ...prev,
-      traffic: {
-        ...prev.traffic,
-        junctions: (prev.traffic?.junctions || []).map(j => {
-          if (j.id === junctionId || j.junction_id === junctionId) {
-            return {
-              ...j,
-              congestion_level: level,
-              congestion_index: index,
-              delay_minutes: delay
-            };
-          }
-          return j;
-        })
+    setTelemetry(prev => {
+      const updatedJunctions = { ...(prev.traffic?.junctions || {}) };
+      for (const [key, j] of Object.entries(updatedJunctions)) {
+        if (key === junctionId || j.id === junctionId || j.junction_id === junctionId) {
+          updatedJunctions[key] = {
+            ...j,
+            congestion_level: level,
+            congestion_index: index,
+            delay_minutes: delay
+          };
+        }
       }
-    }));
+      return {
+        ...prev,
+        traffic: {
+          ...prev.traffic,
+          junctions: updatedJunctions
+        }
+      };
+    });
     try {
       await fetch('/api/simulation/traffic', {
         method: 'POST',
@@ -555,22 +577,25 @@ export const AuraProvider = ({ children }) => {
   };
 
   const toggleGreenCorridor = async (junctionId, status) => {
-    setTelemetry(prev => ({
-      ...prev,
-      traffic: {
-        ...prev.traffic,
-        junctions: (prev.traffic?.junctions || []).map(j => {
-          if (j.id === junctionId || j.junction_id === junctionId) {
-            return {
-              ...j,
-              green_corridor_active: status,
-              signal_state: status ? 'GREEN_CORRIDOR' : 'GREEN'
-            };
-          }
-          return j;
-        })
+    setTelemetry(prev => {
+      const updatedJunctions = { ...(prev.traffic?.junctions || {}) };
+      for (const [key, j] of Object.entries(updatedJunctions)) {
+        if (key === junctionId || j.id === junctionId || j.junction_id === junctionId) {
+          updatedJunctions[key] = {
+            ...j,
+            green_corridor_active: status,
+            signal_state: status ? 'GREEN_CORRIDOR' : 'GREEN'
+          };
+        }
       }
-    }));
+      return {
+        ...prev,
+        traffic: {
+          ...prev.traffic,
+          junctions: updatedJunctions
+        }
+      };
+    });
     try {
       await fetch('/api/simulation/green-corridor', {
         method: 'POST',
@@ -596,11 +621,9 @@ export const AuraProvider = ({ children }) => {
       simulation: { ...prev.simulation, demo_mode_active: true, speed: 2.0, is_running: true }
     }));
 
-    // Step 1: Inject Uppal gridlock after 4 seconds
     setTimeout(() => {
       injectTraffic('J1_UPPAL', 'GRIDLOCK', 95, 4.5);
       
-      // Step 2: Reroute via Nacharam bypass after 3 seconds
       setTimeout(() => {
         if (fallbackBundle.routes?.alternate) {
           currentRouteRef.current = fallbackBundle.routes.alternate;
